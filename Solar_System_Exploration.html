@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="http://d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
-    function draw(data) {
+    function draw(locs) {
         	
       // Set scale & axis regions
       var margin = 75,
@@ -15,32 +15,29 @@
         .append("h2")
         .text("Timeline of Solar Exploration");
 
-      d3.select("body")
+      svg = d3.select("body")
         .append("svg")
         .attr("width", width + margin)
-        .attr("height", height + margin)
-        .append('g')
-        .attr("class","mission");
-
-      // d3.select('g')
-      //   .data(data)
-      //   .enter()
-      //   .append('text')
-      //   .text(function (d) {return d['name'];})
-      //   .attr("x", 100)
-      //   .attr("y", function (d) {return +d['launch']*0.1;})
+        .attr("height", height + margin);
 
       // Draw Places / Year Scales
-      d3.select("svg")
-        .append("text")
-        .attr("y", 0.2 * height)
-        .text("Sun");
 
-      d3.select("svg")
+      var g = d3.select("svg")
+        .append('g')
+        .attr("class", "locs");
+
+      g.selectAll("text")
+        .data(locs)
+        .enter()
         .append("text")
-        .attr("y", 0.4 * height)
-        .text("Venus");
+        .attr("y", function (d) {return +d['position']*height;})
+        .text(function (d) {return d['name'];});
       
+      debugger;
+
+      var loc_scale = d3.scale.ordinal()
+        .domain(locs.map(function (d) {return d['name'];}))
+        .range(locs.map(function (d) {return +d['position']*height;}));
 
       var time_scale = d3.scale.linear()
         .range([margin, width])
@@ -52,34 +49,35 @@
         .tickFormat(d3.format("04d"));
 
 
-      // debugger;
       // Function to draw mission path
-      d3.select("svg")
-        .selectAll("path")
-        .data(data)
-        .enter()
-        .append("path")
-        .attr("stroke", "black")
-        .attr("stroke-width", 1)
-        .attr("stroke-dasharray", "5,5")
-        .attr('d', function (d) {
-          var x0 = time_scale(d['launch']);
-          var x1 = time_scale(d['end']);
-          var y0 = 0.3*height; // This is earth for now
-          var y1;
-          if (d['destination'] === "Sun") {
-            y1 = 0.2 * height;
-          } else {
-            y1 = 0.4 * height;
-          }
-          return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
-        });
+      function draw_missions(data) {
+        svg.append('g')
+          .attr("class","mission")
+          .selectAll("path")
+          .data(data)
+          .enter()
+          .append("path")
+          .attr("stroke", "black")
+          .attr("stroke-width", 1)
+          .attr("stroke-dasharray", "5,5")
+          .attr('d', function (d) {
+            var x0 = time_scale(d['launch']);
+            var x1 = time_scale(d['end']);
+            var y0 = loc_scale("Earth");
+            var y1 = loc_scale(d['destination']);
+            return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
+          });
+      }
+
+      d3.tsv("solar_exploration.tsv", draw_missions)
 
       d3.select("svg")
         .append('g')
         .attr('class', 'x axis')
         .attr('transform', "translate(0," + height + ")")
         .call(time_axis);
+      
+
 
       // Bind and draw everything
 
@@ -94,7 +92,7 @@
   <script type="text/javascript">
   /*
     */
-  d3.tsv("solar_exploration.tsv", draw);
+  d3.tsv("locations.tsv", draw);
   </script>
 </body>
 </html>
