@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript">
+    function draw(data) {
+        	
+      // Set scale & axis regions
+      var margin = 75,
+          width = 1400 - margin,
+          height = 600 - margin;
+
+      d3.select("body")
+        .append("h2")
+        .text("Timeline of Solar Exploration");
+
+      d3.select("body")
+        .append("svg")
+        .attr("width", width + margin)
+        .attr("height", height + margin)
+        .append('g')
+        .attr("class","mission");
+
+      // d3.select('g')
+      //   .data(data)
+      //   .enter()
+      //   .append('text')
+      //   .text(function (d) {return d['name'];})
+      //   .attr("x", 100)
+      //   .attr("y", function (d) {return +d['launch']*0.1;})
+
+      // Draw Places / Year Scales
+      d3.select("svg")
+        .append("text")
+        .attr("y", 0.2 * height)
+        .text("Sun");
+
+      d3.select("svg")
+        .append("text")
+        .attr("y", 0.4 * height)
+        .text("Venus");
+      
+
+      var time_scale = d3.scale.linear()
+        .range([margin, width])
+        .domain([1958, 2015])
+
+      var time_axis = d3.svg.axis()
+        .scale(time_scale)
+        .orient("bottom")
+        .tickFormat(d3.format("04d"));
+
+
+      // debugger;
+      // Function to draw mission path
+      d3.select("svg")
+        .selectAll("path")
+        .data(data)
+        .enter()
+        .append("path")
+        .attr("stroke", "black")
+        .attr("stroke-width", 1)
+        .attr("stroke-dasharray", "5,5")
+        .attr('d', function (d) {
+          var x0 = time_scale(d['launch']);
+          var x1 = time_scale(d['end']);
+          var y0 = 0.3*height; // This is earth for now
+          var y1;
+          if (d['destination'] === "Sun") {
+            y1 = 0.2 * height;
+          } else {
+            y1 = 0.4 * height;
+          }
+          return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
+        });
+
+      d3.select("svg")
+        .append('g')
+        .attr('class', 'x axis')
+        .attr('transform', "translate(0," + height + ")")
+        .call(time_axis);
+
+      // Bind and draw everything
+
+    	// Set Mouseover events
+
+    	// Set button actions/transitions
+    	
+    }
+      </script>
+  </head>
+<body>
+  <script type="text/javascript">
+  /*
+    */
+  d3.tsv("solar_exploration.tsv", draw);
+  </script>
+</body>
+</html>
