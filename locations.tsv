@@ -1,5 +1,16 @@
 name	position
-Sun	0.2
-Mercury	0.4
-Venus	0.6
-Earth	0.8
+Sun	0.1
+Mercury	0.15
+Venus	0.2
+Earth	0.25
+Moon	0.3
+Mars	0.35
+Asteroids	0.425
+Jupiter	0.5
+Saturn	0.55
+Titan	0.6
+Uranaus	0.65
+Neptune	0.7
+Comets	0.75
+Interplanetary Space	0.8
+Pluto 0.85

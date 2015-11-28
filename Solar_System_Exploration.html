@@ -8,12 +8,12 @@
         	
       // Set scale & axis regions
       var margin = 75,
-          width = 1400 - margin,
-          height = 600 - margin;
+          width = 1200 - margin,
+          height = 800 - margin;
 
       d3.select("body")
         .append("h2")
-        .text("Timeline of Solar Exploration");
+        .text("Timeline of Solar System Exploration");
 
       svg = d3.select("body")
         .append("svg")
@@ -53,17 +53,33 @@
       function draw_missions(data) {
         svg.append('g')
           .attr("class","mission")
-          .selectAll("path")
+          .selectAll("path.trip")
           .data(data)
           .enter()
           .append("path")
+          .attr("class", "trip")
           .attr("stroke", "black")
           .attr("stroke-width", 1)
           .attr("stroke-dasharray", "5,5")
           .attr('d', function (d) {
             var x0 = time_scale(d['launch']);
-            var x1 = time_scale(d['end']);
+            var x1 = time_scale(d['arrival']);
             var y0 = loc_scale("Earth");
+            var y1 = loc_scale(d['destination']);
+            return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
+          });
+        d3.select("g.mission")
+          .selectAll("path.activity")
+          .data(data)
+          .enter()
+          .append("path")
+          .attr("class", "activity")
+          .attr("stroke", "black")
+          .attr("stroke-width", 1)
+          .attr("d", function (d) {
+            var x0 = time_scale(d['arrival']);
+            var x1 = time_scale(d['end']);
+            var y0 = loc_scale(d['destination']);
             var y1 = loc_scale(d['destination']);
             return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
           });
