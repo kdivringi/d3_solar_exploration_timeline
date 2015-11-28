@@ -1,16 +1,15 @@
-name	position
-Sun	0.1
-Mercury	0.15
-Venus	0.2
-Earth	0.25
-Moon	0.3
-Mars	0.35
-Asteroids	0.425
-Jupiter	0.5
-Saturn	0.55
-Titan	0.6
-Uranaus	0.65
-Neptune	0.7
-Comets	0.75
-Interplanetary Space	0.8
-Pluto 0.85
+name	position	color
+Sun	0.045	#F4E69D
+Mercury	0.115	#BFBFBF
+Venus	0.185	#F7B47D
+Earth	0.255	blue
+Mars	0.325	#F2919A
+Asteroids	0.395	#83D1DB
+Jupiter	0.465	#DFB97B
+Saturn	0.535	#D3AD6C
+Titan	0.605	#36D8C1
+Uranus	0.675	#8EA9B2
+Neptune	0.745	#00B3D4
+Comets	0.815	#51C9E4
+Interplanetary Space	0.885	#B1A1C6
+Pluto	0.955	#94C09C

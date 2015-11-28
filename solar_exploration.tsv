@@ -1,4 +1,11 @@
 name	launch	arrival	end	destination	type	success	secondary link
 Pioneer 6	1965	1965	2000	Sun	explorer	True		
+Pioneer 7	1966	1966	1995	Sun	explorer	True
+Pioneer 8	1967	1967	1996	Sun	explorer	True
+Pioneer 9	1968	1968	1979	Sun	explorer	True
+Helios A	1974	1974	1975	Sun	orbiter	True
+Helios B	1976	1976	1979	Sun	orbiter	True
 Venera 2	1965	1965	1967	Venus	flyby	True
 Mariner 10	1973	1974	1975	Venus	flyby	True	Mercury,1974
+Viking 1	1975	1976	1980	Mars	orbiter	True
+Galileo	1989	1995	2003	Jupiter	orbiter	True

@@ -2,20 +2,23 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
   <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript">
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript">
     function draw(locs) {
         	
       // Set scale & axis regions
       var margin = 75,
-          width = 1200 - margin,
-          height = 800 - margin;
+          width = 940 - margin,
+          height = 700 - margin;
 
-      d3.select("body")
-        .append("h2")
-        .text("Timeline of Solar System Exploration");
+      // d3.select("body")
+      //   .append("h2")
+      //   .text("Timeline of Solar System Exploration");
 
-      svg = d3.select("body")
+      svg = d3.select("#vis")
         .append("svg")
         .attr("width", width + margin)
         .attr("height", height + margin);
@@ -33,11 +36,25 @@
         .attr("y", function (d) {return +d['position']*height;})
         .text(function (d) {return d['name'];});
       
-      debugger;
+      var p_delta = 0.07;
+      g.selectAll("rect.back")
+        .data(locs)
+        .enter()
+        .append("rect")
+        .attr("class", "back")
+        .attr("x", margin)
+        .attr("y", function (d) { 
+          return +d['position']*height - 0.5*p_delta*height;
+        })
+        .attr("width", width - margin)
+        .attr("height",p_delta*height)
+        .style("fill", function (d) {return d['color'];})
+        .style("opacity", 0.2);
 
       var loc_scale = d3.scale.ordinal()
         .domain(locs.map(function (d) {return d['name'];}))
         .range(locs.map(function (d) {return +d['position']*height;}));
+
 
       var time_scale = d3.scale.linear()
         .range([margin, width])
@@ -51,6 +68,7 @@
 
       // Function to draw mission path
       function draw_missions(data) {
+        debugger;
         svg.append('g')
           .attr("class","mission")
           .selectAll("path.trip")
@@ -85,7 +103,7 @@
           });
       }
 
-      d3.tsv("solar_exploration.tsv", draw_missions)
+      d3.tsv("solar_exploration.tsv", draw_missions);
 
       d3.select("svg")
         .append('g')
@@ -105,6 +123,27 @@
       </script>
   </head>
 <body>
+  <div class="container">
+  <div class="row">
+    <h1>Timeline of Solar System Exploration</h1>
+    <div class="span12" id="vis"></div>
+  </div>
+  <div class="row">
+    <div class="span3" id="planets">
+      <h4>Destination</h4>
+    </div>
+    <div class="span3" id="years">
+      <h4>Eras</h4>
+    </div>
+    <div class="span3" id="types">
+      <h4>Mission Types</h4>
+    </div>
+    <div class="span3" id="efficiency">
+      <h4>Mission Success</h4>
+    </div>
+  </div>
+  </div>
+
   <script type="text/javascript">
   /*
     */
