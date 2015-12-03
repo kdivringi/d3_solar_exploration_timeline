@@ -6,6 +6,17 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+  <style>
+    .d3-tip {
+      line-height: 1;
+      font-weight: bold;
+      padding: 12px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border-radius: 2px;
+    }
+  </style>
   <script type="text/javascript">
     function draw(locs) {
         	
@@ -64,6 +75,27 @@
         .orient("bottom")
         .tickFormat(d3.format("04d"));
 
+      var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .direction('n')
+        .html(function (d) {
+          clearTimeout();
+          var text = '<a href="' + d['link'] + '" target="_blank" >' +d['name']+"</a>";
+          text += "<br><strong>Launch:</strong> " + d['launch'];
+          text += "<br><strong>Arrival:</strong> " + d['arrival'];
+          text += "<br><strong>End:</strong> " + d['end'];
+          text += "<br><strong>Type:</strong> " + d['type'];
+          if (d['success']==="True") {
+            text +="<br><strong>Mission:</strong> SUCCESS";
+          } else{
+            text +="<br><strong>Mission:</strong> FAILURE";
+          }
+          return text;
+        });
+
+      svg.call(tip)
+
+      svg.on("click", tip.hide);
 
       // Function to draw mission path
       function draw_missions(data) {
@@ -121,18 +153,23 @@
           .append("path")
           .attr("class", "activity")
           .attr("stroke", "black")
-          .attr("stroke-width", 1)
+          .attr("stroke-width", 1.5)
           .attr("marker-end", "url(#Triangle)")
           .attr("d", function (d, i) {
             var x_factor = calc_x_factor(i)*0.9;
             var y_factor = calc_y_factor(i)*0.9;
-
             var x0 = time_scale(d['arrival']); 
             var x1 = time_scale(d['end']);
+            if (x0===x1) {
+              x0 = x0 - 0.25*time_delta;
+              x1 = x1 + 0.25*time_delta;
+            }
             var y0 = loc_scale(d['destination']) + y_factor;
             var y1 = loc_scale(d['destination']) + y_factor;
             return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
-          });
+          })
+          .on("mouseover", tip.show);
+
       }
 
       d3.tsv("solar_exploration.tsv", draw_missions);

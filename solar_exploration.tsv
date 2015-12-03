@@ -1,105 +1,105 @@
-name	launch	arrival	end	destination	type	success	secondary link
-Pioneer 6	1965	1965	2000	Sun	explorer	True		
-Pioneer 7	1966	1966	1995	Sun	explorer	True
-Pioneer 8	1967	1967	1996	Sun	explorer	True
-Pioneer 9	1968	1968	1979	Sun	explorer	True
-Helios A	1974	1974	1975	Sun	orbiter	True
-Helios B	1976	1976	1979	Sun	orbiter	True
-Ulysses	1990	1994	2009	Sun	orbiter	True
-SOHO	1995	1995	2015	Sun	orbiter	True
-Genesis	2001	2001	2004	Sun	sample return	True
-STEREO A	2006	2007	2015	Sun	orbiter	True
-STEREO B	2006	2006	2015	Sun	orbiter	True
-MESSENGER	2004	2011	2015	Mercury	orbiter	True
-Venera 1	1961	1961	1961	Venus	flyby	True
-Mariner 2	1962	1962	1962	Venus	flyby	True
-Zond 1	1964	1964	1964	Venus	flyby	False
-Venera 2	1965	1965	1967	Venus	flyby	True
-Venera 3	1965	1966	1966	Venus	lander	False
-Mariner 5	1967	1967	1967	Venus	lander	True
-Venera 4	1967	1967	1967	Venus	lander	True
-Venera 5	1969	1969	1969	Venus	lander	True
-Venera 6	1969	1969	1969	Venus	lander	True
-Venera 7	1970	1970	1970	Venus	lander	True
-Venera 8	1972	1972	1972	Venus	lander	True
-Mariner 10	1973	1974	1975	Venus	flyby	True	Mercury,1974
-Venera 9	1975	1975	1975	Venus	orbiter,lander	True
-Venera 10	1975	1975	1975	Venus	orbiter,lander	True
-Pioneer Venus Orbiter	1978	1978	1992	Venus	orbiter	True
-Pioneer Venus Multiprobe	1978	1978	1978	Venus	lander	True
-Venera 11	1978	1978	1978	Venus	flyby,lander	True
-Venera 12	1978	1978	1978	Venus	flyby,lander	True
-Venera 13	1981	1981	1981	Venus	flyby,lander	True
-Venera 14	1981	1981	1981	Venus	flyby,lander	True
-Venera 15	1983	1983	1983	Venus	orbiter	True
-Venera 16	1983	1983	1983	Venus	orbiter	True
-Vega 1	1984	1985	1987	Venus	flyby,lander	True
-Vega 2	1984	1985	1987	Venus	flyby,lander	True
-Megellan	1989	1990	1994	Venus	orbiter	True
-Venus Express	2005	2006	2015	Venus	orbiter	True
-Akatsuki	2010	2015	2015	Venus	orbiter	True
-IKAROS	2010	2010	2015	Venus	flyby	True
-Marsnik 1	1960	1960	1960	Mars	flyby	False
-Marsnik 2	1960	1960	1960	Mars	flyby	False
-Sputnik 22	1962	1962	1962	Mars	flyby	False
-Sputnik 24	1962	1962	1962	Mars	flyby	False
-Mars 1	1962	1962	1962	Mars	flyby	False
-Zond 2	1964	1964	1965	Mars	flyby	False
-Mariner 3	1964	1964	1964	Mars	flyby	False
-Mariner 4	1964	1964	1967	Mars	flyby	True
-Mariner 6	1969	1969	1969	Mars	flyby	True
-Mariner 7	1969	1969	1969	Mars	flyby	True
-Mariner 8	1971	1971	1971	Mars	orbiter	False
-Mariner 9	1971	1971	1972	Mars	orbiter	True
-Mars 2	1971	1971	1972	Mars	orbiter,lander	True
-Mars 3 (Prop-M)	1971	1971	1972	Mars	orbiter,lander	True
-Mars 4	1973	1973	1973	Mars	orbiter	False
-Mars 5	1973	1974	1974	Mars	orbiter	True
-Mars 6	1973	1973	1974	Mars	flyby,lander	False
-Mars 7 	1973	1973	1974	Mars	flyby,lander	False
-Viking 1	1975	1976	1980	Mars	orbiter,lander	True
-Viking 2	1975	1976	1981	Mars	orbiter,lander	True
-Phobos 1 (DAS)	1988	1988	1989	Mars	orbiter,lander	False
-Phobos 2 (DAS,Frog)	1988	1988	1988	Mars	flyby,lander	True
-Mars Observer	1992	1992	1993	Mars	orbiter	False
-Mars 96	1996	1996	1996	Mars	orbiter,lander	False
-Mars Pathfinder (Sojourner)	1996	1997	1997	Mars	rover	True
-Mars Global Surveyor	1996	1997	2006	Mars	orbiter	True
-Nozomi	1998	1998	2003	Mars	orbiter	False
-Mars Climate Orbiter	1998	1998	1999	orbiter	False
-Mars Polar Lander (Deep Space 2)	1999	1999	2000	Mars	lander	False
-Mars Odyssey	2001	2001	2015	Mars	orbiter	True
-Mars Express (Beagle 2)	2003	2003	2015	Mars	orbiter,lander	True
-Mars Exploration Rovers (Spirit,Opportunity)	2003	2004	2015	Mars	rover	True
-Mars Reconnaissance Orbiter	2005	2006	2015	Mars	orbiter	True
-Phoenix Mars Lander	2007	2008	2008	Mars	lander	True
-Mars Science Laboratory (Curiosity)	2011	2012	2015	Mars	rover True
-Frobos Grunt	2011	2011	2011	Mars	lander	False
-Yinghuo-1	2011	2011	2011	Mars	orbiter	False
-MAVEN	2013	2014	2015	Mars	orbiter	True
-Mars Orbiter Mission	2013	2014	2015	Mars	orbiter	True
-Voyager 1	1977	1979	2015	Jupiter	explorer	True
-Voyager 2	1977	1979	2015	Jupiter	explorer	True
-Galileo	1989	1995	2003	Jupiter	orbiter	True
-Juno	2011	2015	2015	Jupiter	orbiter	True
-Cassini (Huygens)	1997	2004	2015	Saturn	orbiter,lander	True
-NEAR Shoemaker	1996	2000	2000	Asteroids	orbiter	True
-Deep Space 1	1998	1999	2001	Asteroids	flyby	True
-Hayabusa (MINERVA)	2003	2005	2010	Asteroids	sample return	True
-Dawn	2007	2011	2015	Comets	orbiter	True
-Hayabusa 2 (MASCOT)	2014	2015	2015	Comets	sample return True
-Giotto	1985	1986	1992	Comets	flyby	True
-Suisei	1985	1985	1992	Comets	flyby	True
-Sakigake	1985	1986	1995	Comets	flyby	True
-Stardust	1999	2004	2011	Comets	sample return	True
-CONTOUR	2003	2003	2003	Comets	flyby	False
-Rosetta (Philoe)	2004	2014	2015	Comets	orbiter,lander	True
-Deep Impact / EPOXI	2005	2005	2013	Comets	impactor	True
-Pioneer 5	1960	1960	1960	Interplanetary Space	explorer	True
-Pioneer 10	1972	1972	2003	Interplanetary Space	explorer	True
-Pioneer 11	1973	1973	1995	Interplanetary Space	explorer	True
-ICE	1978	1978	2015	Interplanetary Space	orbiter	True
-WIND	1994	1994	2015	Interplanetary Space	orbiter	True
-ACE	1997	1997	2015	Interplanetary Space	orbiter	True
-Kepler	2009	2009	2015	Interplanetary Space	telescope	True
-New Horizons	2006	2015	2015	Pluto	flyby	True
+name	launch	arrival	end	destination	type	success	link
+Pioneer 6	1965	1965	2000	Sun	explorer	True	https://en.wikipedia.org/wiki/Pioneer_6,_7,_8,_and_9
+Pioneer 7	1966	1966	1995	Sun	explorer	True	https://en.wikipedia.org/wiki/Pioneer_6,_7,_8,_and_9
+Pioneer 8	1967	1967	1996	Sun	explorer	True	https://en.wikipedia.org/wiki/Pioneer_6,_7,_8,_and_9
+Pioneer 9	1968	1968	1979	Sun	explorer	True	https://en.wikipedia.org/wiki/Pioneer_6,_7,_8,_and_9
+Helios A	1974	1974	1975	Sun	orbiter	True	https://en.wikipedia.org/wiki/Helios_(spacecraft)
+Helios B	1976	1976	1979	Sun	orbiter	True	https://en.wikipedia.org/wiki/Helios_(spacecraft)
+Ulysses	1990	1994	2009	Sun	orbiter	True	https://en.wikipedia.org/wiki/Ulysses_(spacecraft)
+SOHO	1995	1995	2015	Sun	orbiter	True	https://en.wikipedia.org/wiki/Solar_and_Heliospheric_Observatory
+Genesis	2001	2001	2004	Sun	sample return	True	https://en.wikipedia.org/wiki/Genesis_(spacecraft)
+STEREO A	2006	2007	2015	Sun	orbiter	True	https://en.wikipedia.org/wiki/STEREO
+STEREO B	2006	2006	2015	Sun	orbiter	True	https://en.wikipedia.org/wiki/STEREO
+MESSENGER	2004	2011	2015	Mercury	orbiter	True	https://en.wikipedia.org/wiki/MESSENGER
+Venera 1	1961	1961	1961	Venus	flyby	True	https://en.wikipedia.org/wiki/Venera_1
+Mariner 2	1962	1962	1962	Venus	flyby	True	https://en.wikipedia.org/wiki/Mariner_2
+Zond 1	1964	1964	1964	Venus	flyby	False	https://en.wikipedia.org/wiki/Zond_1
+Venera 2	1965	1965	1967	Venus	flyby	True	https://en.wikipedia.org/wiki/Venera_2
+Venera 3	1965	1966	1966	Venus	lander	False	https://en.wikipedia.org/wiki/Venera_3
+Mariner 5	1967	1967	1967	Venus	lander	True	https://en.wikipedia.org/wiki/Mariner_5
+Venera 4	1967	1967	1967	Venus	lander	True	https://en.wikipedia.org/wiki/Venera_4
+Venera 5	1969	1969	1969	Venus	lander	True	https://en.wikipedia.org/wiki/Venera_5
+Venera 6	1969	1969	1969	Venus	lander	True	https://en.wikipedia.org/wiki/Venera_6
+Venera 7	1970	1970	1970	Venus	lander	True	https://en.wikipedia.org/wiki/Venera_7
+Venera 8	1972	1972	1972	Venus	lander	True	https://en.wikipedia.org/wiki/Venera_8
+Mariner 10	1973	1974	1975	Venus	flyby	True	https://en.wikipedia.org/wiki/Mariner_10
+Venera 9	1975	1975	1975	Venus	orbiter,lander	True	https://en.wikipedia.org/wiki/Venera_9
+Venera 10	1975	1975	1975	Venus	orbiter,lander	True	https://en.wikipedia.org/wiki/Venera_10
+Pioneer Venus Orbiter	1978	1978	1992	Venus	orbiter	True	https://en.wikipedia.org/wiki/Pioneer_Venus_Orbiter
+Pioneer Venus Multiprobe	1978	1978	1978	Venus	lander	True	https://en.wikipedia.org/wiki/Pioneer_Venus_Multiprobe
+Venera 11	1978	1978	1978	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Venera_11
+Venera 12	1978	1978	1978	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Venera_12
+Venera 13	1981	1981	1981	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Venera_13
+Venera 14	1981	1981	1981	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Venera_14
+Venera 15	1983	1983	1983	Venus	orbiter	True	https://en.wikipedia.org/wiki/Venera_15
+Venera 16	1983	1983	1983	Venus	orbiter	True	https://en.wikipedia.org/wiki/Venera_16
+Vega 1	1984	1985	1987	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Vega_1
+Vega 2	1984	1985	1987	Venus	flyby,lander	True	https://en.wikipedia.org/wiki/Vega_2
+Magellan	1989	1990	1994	Venus	orbiter	True	https://en.wikipedia.org/wiki/Magellan_(spacecraft)
+Venus Express	2005	2006	2015	Venus	orbiter	True	https://en.wikipedia.org/wiki/Venus_Express
+Akatsuki	2010	2015	2015	Venus	orbiter	True	https://en.wikipedia.org/wiki/Akatsuki_(spacecraft)
+IKAROS	2010	2010	2015	Venus	flyby	True	https://en.wikipedia.org/wiki/IKAROS
+Marsnik 1	1960	1960	1960	Mars	flyby	False	https://en.wikipedia.org/wiki/Mars_1M_No.1
+Marsnik 2	1960	1960	1960	Mars	flyby	False	https://en.wikipedia.org/wiki/Mars_1M_No.2
+Sputnik 22	1962	1962	1962	Mars	flyby	False	https://en.wikipedia.org/wiki/Mars_2MV-4_No.1
+Sputnik 24	1962	1962	1962	Mars	flyby	False	https://en.wikipedia.org/wiki/Mars_2MV-3_No.1
+Mars 1	1962	1962	1962	Mars	flyby	False	https://en.wikipedia.org/wiki/Mars_1
+Zond 2	1964	1964	1965	Mars	flyby	False	https://en.wikipedia.org/wiki/Zond_2
+Mariner 3	1964	1964	1964	Mars	flyby	False	https://en.wikipedia.org/wiki/Mariner_3
+Mariner 4	1964	1964	1967	Mars	flyby	True	https://en.wikipedia.org/wiki/Mariner_4
+Mariner 6	1969	1969	1969	Mars	flyby	True	https://en.wikipedia.org/wiki/Mariner_6_and_7
+Mariner 7	1969	1969	1969	Mars	flyby	True	https://en.wikipedia.org/wiki/Mariner_6_and_7
+Mariner 8	1971	1971	1971	Mars	orbiter	False	https://en.wikipedia.org/wiki/Mariner_8
+Mariner 9	1971	1971	1972	Mars	orbiter	True	https://en.wikipedia.org/wiki/Mariner_9
+Mars 2	1971	1971	1972	Mars	orbiter,lander	True	https://en.wikipedia.org/wiki/Mars_2
+Mars 3 (Prop-M)	1971	1971	1972	Mars	orbiter,lander	True	https://en.wikipedia.org/wiki/Mars_3
+Mars 4	1973	1973	1973	Mars	orbiter	False	https://en.wikipedia.org/wiki/Mars_4
+Mars 5	1973	1974	1974	Mars	orbiter	True	https://en.wikipedia.org/wiki/Mars_5
+Mars 6	1973	1973	1974	Mars	flyby,lander	False	https://en.wikipedia.org/wiki/Mars_6
+Mars 7 	1973	1973	1974	Mars	flyby,lander	False	https://en.wikipedia.org/wiki/Mars_7
+Viking 1	1975	1976	1980	Mars	orbiter,lander	True	https://en.wikipedia.org/wiki/Viking_1
+Viking 2	1975	1976	1981	Mars	orbiter,lander	True	https://en.wikipedia.org/wiki/Viking_2
+Phobos 1 (DAS)	1988	1988	1989	Mars	orbiter,lander	False	https://en.wikipedia.org/wiki/Phobos_program
+Phobos 2 (DAS,Frog)	1988	1988	1988	Mars	flyby,lander	True	https://en.wikipedia.org/wiki/Phobos_program
+Mars Observer	1992	1992	1993	Mars	orbiter	False	https://en.wikipedia.org/wiki/Mars_Observer
+Mars 96	1996	1996	1996	Mars	orbiter,lander	False	https://en.wikipedia.org/wiki/Mars_96
+Mars Pathfinder (Sojourner)	1996	1997	1997	Mars	rover	True	https://en.wikipedia.org/wiki/Mars_Pathfinder
+Mars Global Surveyor	1996	1997	2006	Mars	orbiter	True	https://en.wikipedia.org/wiki/Mars_Global_Surveyor
+Nozomi	1998	1998	2003	Mars	orbiter	False	https://en.wikipedia.org/wiki/Nozomi_(spacecraft)
+Mars Climate Orbiter	1998	1998	1999	Mars	orbiter	False	https://en.wikipedia.org/wiki/Mars_Climate_Orbiter
+Mars Polar Lander (Deep Space 2)	1999	1999	2000	Mars	lander	False	https://en.wikipedia.org/wiki/Mars_Polar_Lander
+Mars Odyssey	2001	2001	2015	Mars	orbiter	True	https://en.wikipedia.org/wiki/2001_Mars_Odyssey
+Mars Express (Beagle 2)	2003	2003	2015	Mars	orbiter,lander	True	https://en.wikipedia.org/wiki/Mars_Express
+Mars Exploration Rovers (Spirit,Opportunity)	2003	2004	2015	Mars	rover	True	https://en.wikipedia.org/wiki/Mars_Exploration_Rover
+Mars Reconnaissance Orbiter	2005	2006	2015	Mars	orbiter	True	https://en.wikipedia.org/wiki/Mars_Reconnaissance_Orbiter
+Phoenix Mars Lander	2007	2008	2008	Mars	lander	True	https://en.wikipedia.org/wiki/Phoenix_(spacecraft)
+Mars Science Laboratory (Curiosity)	2011	2012	2015	Mars	rover	True	https://en.wikipedia.org/wiki/Mars_Science_Laboratory
+Fobos Grunt	2011	2011	2011	Mars	lander	False	https://en.wikipedia.org/wiki/Fobos-Grunt
+Yinghuo-1	2011	2011	2011	Mars	orbiter	False	https://en.wikipedia.org/wiki/Yinghuo-1
+MAVEN	2013	2014	2015	Mars	orbiter	True	https://en.wikipedia.org/wiki/MAVEN
+Mars Orbiter Mission	2013	2014	2015	Mars	orbiter	True	https://en.wikipedia.org/wiki/Mars_Orbiter_Mission
+Voyager 1	1977	1979	2015	Jupiter	explorer	True	https://en.wikipedia.org/wiki/Voyager_1
+Voyager 2	1977	1979	2015	Jupiter	explorer	True	https://en.wikipedia.org/wiki/Voyager_2
+Galileo	1989	1995	2003	Jupiter	orbiter	True	https://en.wikipedia.org/wiki/Galileo_(spacecraft)
+Juno	2011	2015	2015	Jupiter	orbiter	True	https://en.wikipedia.org/wiki/Juno_(spacecraft)
+Cassini (Huygens)	1997	2004	2015	Saturn	orbiter,lander	True	https://en.wikipedia.org/wiki/Cassini%E2%80%93Huygens
+NEAR Shoemaker	1996	2000	2000	Asteroids	orbiter	True	https://en.wikipedia.org/wiki/NEAR_Shoemaker
+Deep Space 1	1998	1999	2001	Asteroids	flyby	True	https://en.wikipedia.org/wiki/Deep_Space_1
+Hayabusa (MINERVA)	2003	2005	2010	Asteroids	sample return	True	https://en.wikipedia.org/wiki/Hayabusa
+Dawn	2007	2011	2015	Comets	orbiter	True	https://en.wikipedia.org/wiki/Dawn_(spacecraft)
+Hayabusa 2 (MASCOT)	2014	2015	2015	Comets	sample return	True	https://en.wikipedia.org/wiki/Hayabusa_2
+Giotto	1985	1986	1992	Comets	flyby	True	https://en.wikipedia.org/wiki/Giotto_(spacecraft)
+Suisei	1985	1985	1992	Comets	flyby	True	https://en.wikipedia.org/wiki/Suisei_(spacecraft)
+Sakigake	1985	1986	1995	Comets	flyby	True	https://en.wikipedia.org/wiki/Sakigake
+Stardust	1999	2004	2011	Comets	sample return	True	https://en.wikipedia.org/wiki/Stardust_(spacecraft)
+CONTOUR	2003	2003	2003	Comets	flyby	False	https://en.wikipedia.org/wiki/CONTOUR
+Rosetta (Philoe)	2004	2014	2015	Comets	orbiter,lander	True	https://en.wikipedia.org/wiki/Rosetta_(spacecraft)
+Deep Impact / EPOXI	2005	2005	2013	Comets	impactor	True	https://en.wikipedia.org/wiki/Deep_Impact_(spacecraft)
+Pioneer 5	1960	1960	1960	Interplanetary Space	explorer	True	https://en.wikipedia.org/wiki/Pioneer_5
+Pioneer 10	1972	1972	2003	Interplanetary Space	explorer	True	https://en.wikipedia.org/wiki/Pioneer_10
+Pioneer 11	1973	1973	1995	Interplanetary Space	explorer	True	https://en.wikipedia.org/wiki/Pioneer_11
+ICE	1978	1978	2015	Interplanetary Space	orbiter	True	https://en.wikipedia.org/wiki/International_Cometary_Explorer
+WIND	1994	1994	2015	Interplanetary Space	orbiter	True	https://en.wikipedia.org/wiki/WIND_(spacecraft)
+ACE	1997	1997	2015	Interplanetary Space	orbiter	True	https://en.wikipedia.org/wiki/Advanced_Composition_Explorer
+Kepler	2009	2009	2015	Interplanetary Space	telescope	True	https://en.wikipedia.org/wiki/Kepler_(spacecraft)
+New Horizons	2006	2015	2015	Pluto	flyby	True	https://en.wikipedia.org/wiki/New_Horizons
