@@ -130,7 +130,8 @@
 
         function calc_y_factor(i) {
           var mod = i % loop_limit;
-          var y_factor = loc_scale.rangeBand() * mod/loop_limit;
+          var band = loc_scale.rangeBand();
+          var y_factor = 0.05 * band + 0.9*(band * mod/loop_limit);
           return y_factor;
         }
 
@@ -313,7 +314,7 @@
 
           g.selectAll("text")
           .on("click", zoom_loc)
-          
+
         }
 
         function zoom_loc(d, i) {
