@@ -195,9 +195,11 @@
             return d['name'] === to_loc;
           });
 
+          function keyfunc (d) {return d['name'];}
+
           var trips = d3.select("g.mission")
             .selectAll('path.trip')
-            .data(m_filtered);
+            .data(m_filtered, keyfunc);
 
           trips.exit().remove()
 
@@ -219,7 +221,7 @@
 
           activities = d3.select("g.mission")
             .selectAll('path.activity')
-            .data(m_filtered);
+            .data(m_filtered, keyfunc);
 
           activities.exit().remove();
 
@@ -242,9 +244,13 @@
 
 
           rects = g.selectAll("rect.back")
-            .data(loc_filtered);
+            .data(loc_filtered, keyfunc);
 
-          rects.exit().remove();
+          rects.exit()
+            .transition()
+            .duration(t_time*0.75)
+            .style("opacity", 0)
+            .remove();
 
           rects.transition()
             .duration(t_time)
@@ -255,11 +261,11 @@
 
         function zoom_loc() {
           var t_time = 1000;
-          loc_scale.domain(["Sun"]);
+          loc_scale.domain(["Mars"]);
           loc_scale.rangeBands([0, height],0.1);
           d3.select("g.locs").transition().duration(t_time)
             .call(loc_axis);
-          update_missions(t_time, "Sun");
+          update_missions(t_time, "Mars");
         }
 
       }
