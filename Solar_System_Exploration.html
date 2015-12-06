@@ -39,31 +39,40 @@
         .append('g')
         .attr("class", "locs");
 
-      g.selectAll("text")
-        .data(locs)
-        .enter()
-        .append("text")
-        .attr("y", function (d) {return +d['position']*height;})
-        .text(function (d) {return d['name'];});
 
-      var p_delta = 0.091;
+      var loc_scale = d3.scale.ordinal()
+        .domain(locs.map(function (d) {return d['name'];}))
+        .rangeBands([0,height],0,0.05);
+        // .range(locs.map(function (d) {return +d['position']*height;}));
+        // debugger;
+      var loc_axis = d3.svg.axis()
+        .scale(loc_scale)
+        .orient("left");
+      
+      // g.selectAll("text")
+      //   .data(locs)
+      //   .enter()
+      //   .append("text")
+      //   .attr("y", function (d) {return +d['position']*height;})
+      //   .text(function (d) {return d['name'];});
+
+
+      var p_delta = loc_scale.rangeBand()//0.091;
+
       g.selectAll("rect.back")
         .data(locs)
         .enter()
         .append("rect")
         .attr("class", "back")
-        .attr("x", margin)
+        .attr("x", 0)
         .attr("y", function (d) { 
-          return +d['position']*height - 0.5*p_delta*height;
+          return loc_scale(d['name']);
         })
         .attr("width", width - margin)
-        .attr("height",p_delta*height)
+        .attr("height",p_delta)
         .style("fill", function (d) {return d['color'];})
         .style("opacity", 0.35);
 
-      var loc_scale = d3.scale.ordinal()
-        .domain(locs.map(function (d) {return d['name'];}))
-        .range(locs.map(function (d) {return +d['position']*height;}));
 
 
       var time_scale = d3.scale.linear()
@@ -121,14 +130,10 @@
 
         function calc_y_factor(i) {
           var mod = i % loop_limit;
-          var y_factor = p_delta*height * mod/loop_limit - 0.5*p_delta*height;
+          var y_factor = loc_scale.rangeBand() * mod/loop_limit;
           return y_factor;
         }
 
-        var tripLine = d3.svg.line()
-          .x(function (d) {
-            time_scale
-          })
 
         svg.append('g')
           .attr("class","mission")
@@ -195,7 +200,7 @@
                 return "";
               }
 
-              var y0 = loc_scale("Earth") + y_factor;
+              var y0 = loc_scale(d['destination']) + y_factor;
               var y1 = loc_scale(d['destination']) + y_factor; 
               return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
             });
@@ -220,9 +225,10 @@
         }
 
         function zoom_loc() {
-          time_scale.domain([1970, 1980]);
-          d3.select("g.x").transition().duration(1000)
-            .call(time_axis);
+          loc_scale.domain(["Sun"]);
+          loc_scale.rangeBands([0, height],0.1);
+          d3.select("g.locs").transition().duration(1000)
+            .call(loc_axis);
           update_missions();
         }
 
@@ -235,11 +241,10 @@
         .attr('transform', "translate(0," + height + ")")
         .call(time_axis);
 
-      // svg.append("g")
-      //   .attr("class", "y axis")
-      //   .attr("transform", "translate(0,0)")
-      //   .call(loc_axis);
-      // debugger;
+      svg.select("g.locs")
+        .attr("transform", "translate(" + margin + ",0)")
+        .call(loc_axis);
+      debugger;
 
       // Bind and draw everything
 
