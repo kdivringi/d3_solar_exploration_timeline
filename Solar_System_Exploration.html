@@ -16,6 +16,14 @@
       color: #fff;
       border-radius: 2px;
     }
+
+    .axis path,
+    .axis line, 
+    .locs path,
+    .locs line {
+      fill: none;
+      stroke: black;
+    }
   </style>
   <script type="text/javascript">
     function draw(locs) {
@@ -135,6 +143,13 @@
           return y_factor;
         }
 
+        function select_marker(d) {
+          if (d['success']==="True") {
+            return "url(#Triangle)";
+          } else {
+            return "url(#Cross)";
+          }
+        }
 
         svg.append('g')
           .attr("class","mission")
@@ -168,7 +183,7 @@
           .attr("class", "activity")
           .attr("stroke", "black")
           .attr("stroke-width", 1.5)
-          .attr("marker-end", "url(#Triangle)")
+          .attr("marker-end", select_marker)
           .attr("d", function (d, i) {
             var x_factor = calc_x_factor(i)*0.9;
             var y_factor = calc_y_factor(i)*0.9;
@@ -260,7 +275,7 @@
             .attr("class", "activity")
             .attr("stroke", "black")
             .attr("stroke-width", 1.5)
-            .attr("marker-end", "url(#Triangle)")
+            .attr("marker-end", select_marker)
             .attr("d", function (d) {
               var x0 = time_scale(d['arrival']); 
               var x1 = time_scale(d['end']);
@@ -268,6 +283,36 @@
               return "M" + x0 + " " + y + " L" + x1 + " " + y;
             })
             .on("mouseover", tip.show);
+
+          if (loc_scale.domain().length===1) {
+            m_names = d3.select("g.mission")
+              .selectAll("text.name")
+              .data(m_filtered, keyfunc);
+
+
+            m_names.enter()
+              .append("text")
+              .attr("class", "name")
+              .attr("x", function (d) {return time_scale(d['launch']);})
+              .attr("y", 0)
+              .attr("y", function (d, i) {
+                var y_factor = calc_y_factor(i)*0.9;
+                return loc_scale(d['destination']) + y_factor;
+              })
+              .attr("opacity", 0)
+              .text(function (d) {return d['name']});
+
+            m_names.transition()
+              .duration(t_time)
+              .attr("opacity", 1);            
+          } else {
+            m_names.transition()
+              .duration(t_time)
+              .attr("opacity", 0)
+              .remove()
+          }
+
+
 
           activities.transition()
             .duration(t_time)
@@ -372,53 +417,33 @@
                       orient="auto">
                   <path d="M 0 0 L 10 5 L 0 10 z" />
               </marker>
+              <marker id ="Cross" 
+                      viewBox="0 0 10 10" 
+                      refX="3" refY="5" 
+                      markerWidth="5" 
+                      markerHeight="5" 
+                      orient="auto"
+                      stroke="black"
+                      stroke-width = "1.5">
+                <path d="M 0 0 L 10 10 M 0 10 L 10 0"/>
+            </marker>
             </defs>
 
       </svg>
     </div>
   </div>
   <div class="row">
-    <div class="span3" id="planets">
-      <h4>Destination</h4>
-      <p>
-        <a id="sun-button" class="btn">Sun</a>
-        <a href="#" class="btn">Mercury</a>
-        <a href="#" class="btn">Venus</a>
-        <a href="#" class="btn">Mars</a>
-        <a href="#" class="btn">Asteroids</a>
-        <a href="#" class="btn">Jupiter</a>
-        <a href="#" class="btn">Saturn</a>
-        <a href="#" class="btn">Comets</a>
-        <a href="#" class="btn">Interplanetary Space</a>
-        <a href="#" class="btn">Pluto</a>
-      </p>
+    <div class="span4" id="planets">
+      <h4>Legend</h4>
+      <p>Here are what some of the symbols mean</p>
+      <p>Mouse-over missions for more information</p>
+      <p>Click locations on the right to zoom in</p>
     </div>
-    <div class="span3" id="years">
-      <h4>Eras</h4>
+    <div class="span8" id="years">
+      <p>This visualization is based off of this link.</p>
+      <p>My name is Kaan Divringi and this is a final project for the Udacity nanodegree class on D3.</p>
     </div>
-    <div class="span3" id="types">
-      <h4>Mission Types</h4>
-      <p>
-        <a href="#" class="btn">flyby</a>
-        <a href="#" class="btn">orbiter</a>
-        <a href="#" class="btn">lander</a>
-        <a href="#" class="btn">rover</a>
-        <a href="#" class="btn">explorer</a>
-        <a href="#" class="btn">impactor</a>
-        <a href="#" class="btn">sample return</a>
-        <a href="#" class="btn">telescope</a>
-        <a href="#" class="btn">flyby,lander</a>
-        <a href="#" class="btn">orbiter,lander</a>
-        <a href="#" class="btn">orbiter,lander,rover</a>
-      </p>
-    </div>
-    <div class="span3" id="efficiency">
-      <h4>Mission Success</h4>
-      <p>
-        <a href="#" class="btn">True</a>
-        <a href="#" class="btn">False</a>
-      </p>
-    </div>
+    
   </div>
   </div>
 
