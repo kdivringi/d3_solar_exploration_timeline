@@ -183,17 +183,25 @@
           })
           .on("mouseover", tip.show);
 
-        d3.select("#sun-button")
+        g.selectAll("text")
           .on("click", zoom_loc)
 
-        function update_missions(t_time, to_loc) {
+        function update_missions(t_time) {
 
-          var m_filtered = data.filter(function (d) {
-            return d['destination'] === to_loc;
-          });
-          var loc_filtered = locs.filter(function (d) {
-            return d['name'] === to_loc;
-          });
+          debugger;
+          var m_filtered;
+          var loc_filtered;
+          if (loc_scale.domain().length === 1) {
+            m_filtered = data.filter(function (d) {
+              return d['destination'] === loc_scale.domain()[0];
+            });
+            loc_filtered = locs.filter(function (d) {
+              return d['name'] === loc_scale.domain()[0];
+            });
+          } else {
+            m_filtered = data;
+            loc_filtered = locs;
+          };
 
           function keyfunc (d) {return d['name'];}
 
@@ -202,6 +210,23 @@
             .data(m_filtered, keyfunc);
 
           trips.exit().remove()
+
+          trips.enter()
+            .append("path")
+            .attr("class", "trip")
+            .attr("stroke", "black")
+            .attr("stroke-width", 1)
+            .attr("stroke-dasharray", "5,5")
+            .attr('d' , function (d) {
+              var x0 = time_scale(d['launch']);
+              var x1 = time_scale(d['arrival']);
+              var y = 0;
+              if (x0===x1) {
+                return "";
+              } else {
+                return "M" + x0 + " " + y + " L" + x1 + " " + y
+              }
+            });
 
           trips.transition()
             .duration(t_time)
@@ -213,8 +238,12 @@
               if (x0===x1) {
                 return "";
               }
+              if (loc_scale.domain().length===1) {
+                var y0 = loc_scale(d['destination']) + y_factor;
+              } else {
+                var y0 = loc_scale("Earth") + loc_scale.rangeBand()*0.5;
+              }
 
-              var y0 = loc_scale(d['destination']) + y_factor;
               var y1 = loc_scale(d['destination']) + y_factor; 
               return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
             });
@@ -224,6 +253,20 @@
             .data(m_filtered, keyfunc);
 
           activities.exit().remove();
+
+          activities.enter()
+            .append("path")
+            .attr("class", "activity")
+            .attr("stroke", "black")
+            .attr("stroke-width", 1.5)
+            .attr("marker-end", "url(#Triangle)")
+            .attr("d", function (d) {
+              var x0 = time_scale(d['arrival']); 
+              var x1 = time_scale(d['end']);
+              var y = 0;
+              return "M" + x0 + " " + y + " L" + x1 + " " + y;
+            })
+            .on("mouseover", tip.show);
 
           activities.transition()
             .duration(t_time)
@@ -252,20 +295,42 @@
             .style("opacity", 0)
             .remove();
 
+          rects.enter()
+            .append("rect")
+            .attr("class", "back")
+            .attr("x", 0)
+            .attr("width", width - margin)
+            .style("fill", function (d) {return d['color'];})
+            .style("opacity", 0);
+
           rects.transition()
             .duration(t_time)
-            .attr("y", 0)
-            .attr("height", height);
+            .attr("y", function (d) {
+              return loc_scale(d['name']);
+            })
+            .attr("height", loc_scale.rangeBand())
+            .style("opacity", 0.35);
 
+          g.selectAll("text")
+          .on("click", zoom_loc)
+          
         }
 
-        function zoom_loc() {
+        function zoom_loc(d, i) {
+          to_loc = d3.select(this).text();
+          if (to_loc==="Earth") {
+            return;
+          } else if (loc_scale.domain().length === 1) {
+            loc_scale.domain(locs.map(function (d) {return d['name'];}))
+              .rangeBands([0,height],0,0.05);
+          } else {
+            loc_scale.domain([to_loc]);
+            loc_scale.rangeBands([0, height]);
+          }
           var t_time = 1000;
-          loc_scale.domain(["Mars"]);
-          loc_scale.rangeBands([0, height],0.1);
           d3.select("g.locs").transition().duration(t_time)
             .call(loc_axis);
-          update_missions(t_time, "Mars");
+          update_missions(t_time);
         }
 
       }
