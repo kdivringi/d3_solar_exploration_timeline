@@ -29,17 +29,17 @@
     function draw(locs) {
         	
       // Set scale & axis regions
-      var margin = 75,
-          width = 940 - margin,
-          height = 700 - margin;
+      var margin = {'left':150, 'bot':40, 'right':300};
+      var width = 1315 - margin.left - margin.right,
+          height = 700 - margin.bot;
 
       // d3.select("body")
       //   .append("h2")
       //   .text("Timeline of Solar System Exploration");
 
       var svg = d3.select("#vis")
-        .attr("width", width + margin)
-        .attr("height", height + margin);
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.bot);
 
       // Draw Places / Year Scales
 
@@ -51,8 +51,7 @@
       var loc_scale = d3.scale.ordinal()
         .domain(locs.map(function (d) {return d['name'];}))
         .rangeBands([0,height],0,0.05);
-        // .range(locs.map(function (d) {return +d['position']*height;}));
-        // debugger;
+        
       var loc_axis = d3.svg.axis()
         .scale(loc_scale)
         .orient("left");
@@ -67,6 +66,10 @@
 
       var p_delta = loc_scale.rangeBand()//0.091;
 
+      var time_scale = d3.scale.linear()
+        .range([margin.left, width + margin.left])
+        .domain([1958, 2015]);
+
       g.selectAll("rect.back")
         .data(locs)
         .enter()
@@ -76,16 +79,13 @@
         .attr("y", function (d) { 
           return loc_scale(d['name']);
         })
-        .attr("width", width - margin)
+        .attr("width", width)
         .attr("height",p_delta)
         .style("fill", function (d) {return d['color'];})
         .style("opacity", 0.35);
 
 
 
-      var time_scale = d3.scale.linear()
-        .range([margin, width])
-        .domain([1958, 2015]);
 
       // var loc_axis = d3.svg.axis()
       //   .scale(loc_scale)
@@ -120,7 +120,6 @@
 
       // Function to draw mission path
       function draw_missions(data) {
-        // debugger;
 
         // Draw trip section of path
           // Not if launch=arrival
@@ -204,7 +203,6 @@
 
         function update_missions(t_time) {
 
-          debugger;
           var m_filtered;
           var loc_filtered;
           if (loc_scale.domain().length === 1) {
@@ -297,7 +295,7 @@
               .attr("y", 0)
               .attr("y", function (d, i) {
                 var y_factor = calc_y_factor(i)*0.9;
-                return loc_scale(d['destination']) + y_factor;
+                return loc_scale(d['destination']) + y_factor - 5;
               })
               .attr("opacity", 0)
               .text(function (d) {return d['name']});
@@ -345,7 +343,7 @@
             .append("rect")
             .attr("class", "back")
             .attr("x", 0)
-            .attr("width", width - margin)
+            .attr("width", width)
             .style("fill", function (d) {return d['color'];})
             .style("opacity", 0);
 
@@ -389,9 +387,8 @@
         .call(time_axis);
 
       svg.select("g.locs")
-        .attr("transform", "translate(" + margin + ",0)")
+        .attr("transform", "translate(" + margin.left + ",0)")
         .call(loc_axis);
-      debugger;
 
       // Bind and draw everything
 
@@ -403,10 +400,14 @@
       </script>
   </head>
 <body>
-  <div class="container">
-  <div class="row">
-    <h1>Timeline of Solar System Exploration</h1>
-    <div class="span12">
+  <div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span10 offset2">
+      <h1>Timeline of Solar System Exploration</h1>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span11 offset1">
       <svg id="vis">
             <defs>
               <marker id="Triangle"
@@ -432,14 +433,14 @@
       </svg>
     </div>
   </div>
-  <div class="row">
-    <div class="span4" id="planets">
+  <div class="row-fluid">
+    <div class="span2 offset1" id="planets">
       <h4>Legend</h4>
       <p>Here are what some of the symbols mean</p>
       <p>Mouse-over missions for more information</p>
       <p>Click locations on the right to zoom in</p>
     </div>
-    <div class="span8" id="years">
+    <div class="span9" id="years">
       <p>This visualization is based off of this link.</p>
       <p>My name is Kaan Divringi and this is a final project for the Udacity nanodegree class on D3.</p>
     </div>
