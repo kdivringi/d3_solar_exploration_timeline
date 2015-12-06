@@ -186,11 +186,23 @@
         d3.select("#sun-button")
           .on("click", zoom_loc)
 
-        function update_missions() {
-          d3.select("g.mission")
+        function update_missions(t_time, to_loc) {
+
+          var m_filtered = data.filter(function (d) {
+            return d['destination'] === to_loc;
+          });
+          var loc_filtered = locs.filter(function (d) {
+            return d['name'] === to_loc;
+          });
+
+          var trips = d3.select("g.mission")
             .selectAll('path.trip')
-            .transition()
-            .duration(1000)
+            .data(m_filtered);
+
+          trips.exit().remove()
+
+          trips.transition()
+            .duration(t_time)
             .attr("d", function (d, i) {
               var x_factor = calc_x_factor(i)*0.9;
               var y_factor = calc_y_factor(i)*0.9;
@@ -204,10 +216,15 @@
               var y1 = loc_scale(d['destination']) + y_factor; 
               return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
             });
-          d3.select("g.mission")
+
+          activities = d3.select("g.mission")
             .selectAll('path.activity')
-            .transition()
-            .duration(1000)
+            .data(m_filtered);
+
+          activities.exit().remove();
+
+          activities.transition()
+            .duration(t_time)
             .attr()
             .attr("d", function (d, i) {
               var x_factor = calc_x_factor(i)*0.9;
@@ -222,14 +239,27 @@
               var y1 = loc_scale(d['destination']) + y_factor;
               return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
             });
+
+
+          rects = g.selectAll("rect.back")
+            .data(loc_filtered);
+
+          rects.exit().remove();
+
+          rects.transition()
+            .duration(t_time)
+            .attr("y", 0)
+            .attr("height", height);
+
         }
 
         function zoom_loc() {
+          var t_time = 1000;
           loc_scale.domain(["Sun"]);
           loc_scale.rangeBands([0, height],0.1);
-          d3.select("g.locs").transition().duration(1000)
+          d3.select("g.locs").transition().duration(t_time)
             .call(loc_axis);
-          update_missions();
+          update_missions(t_time, "Sun");
         }
 
       }
