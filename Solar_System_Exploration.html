@@ -45,7 +45,7 @@
         .append("text")
         .attr("y", function (d) {return +d['position']*height;})
         .text(function (d) {return d['name'];});
-      
+
       var p_delta = 0.091;
       g.selectAll("rect.back")
         .data(locs)
@@ -70,6 +70,10 @@
         .range([margin, width])
         .domain([1958, 2015]);
 
+      // var loc_axis = d3.svg.axis()
+      //   .scale(loc_scale)
+      //   .orient("left");
+
       var time_axis = d3.svg.axis()
         .scale(time_scale)
         .orient("bottom")
@@ -77,7 +81,7 @@
 
       var tip = d3.tip()
         .attr("class", "d3-tip")
-        .direction('n')
+        .direction('s')
         .html(function (d) {
           clearTimeout();
           var text = '<a href="' + d['link'] + '" target="_blank" >' +d['name']+"</a>";
@@ -121,6 +125,11 @@
           return y_factor;
         }
 
+        var tripLine = d3.svg.line()
+          .x(function (d) {
+            time_scale
+          })
+
         svg.append('g')
           .attr("class","mission")
           .selectAll("path.trip")
@@ -132,7 +141,6 @@
           .attr("stroke-width", 1)
           .attr("stroke-dasharray", "5,5")
           .attr('d', function (d, i) {
-            debugger;
             var x_factor = calc_x_factor(i)*0.9;
             var y_factor = calc_y_factor(i)*0.9;
             var x0 = time_scale(d['launch']); 
@@ -170,6 +178,54 @@
           })
           .on("mouseover", tip.show);
 
+        d3.select("#sun-button")
+          .on("click", zoom_loc)
+
+        function update_missions() {
+          d3.select("g.mission")
+            .selectAll('path.trip')
+            .transition()
+            .duration(1000)
+            .attr("d", function (d, i) {
+              var x_factor = calc_x_factor(i)*0.9;
+              var y_factor = calc_y_factor(i)*0.9;
+              var x0 = time_scale(d['launch']); 
+              var x1 = time_scale(d['arrival']);
+              if (x0===x1) {
+                return "";
+              }
+
+              var y0 = loc_scale("Earth") + y_factor;
+              var y1 = loc_scale(d['destination']) + y_factor; 
+              return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
+            });
+          d3.select("g.mission")
+            .selectAll('path.activity')
+            .transition()
+            .duration(1000)
+            .attr()
+            .attr("d", function (d, i) {
+              var x_factor = calc_x_factor(i)*0.9;
+              var y_factor = calc_y_factor(i)*0.9;
+              var x0 = time_scale(d['arrival']); 
+              var x1 = time_scale(d['end']);
+              if (x0===x1) {
+                x0 = x0 - 0.25*time_delta;
+                x1 = x1 + 0.25*time_delta;
+              }
+              var y0 = loc_scale(d['destination']) + y_factor;
+              var y1 = loc_scale(d['destination']) + y_factor;
+              return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
+            });
+        }
+
+        function zoom_loc() {
+          time_scale.domain([1970, 1980]);
+          d3.select("g.x").transition().duration(1000)
+            .call(time_axis);
+          update_missions();
+        }
+
       }
 
       d3.tsv("solar_exploration.tsv", draw_missions);
@@ -178,6 +234,11 @@
         .attr('class', 'x axis')
         .attr('transform', "translate(0," + height + ")")
         .call(time_axis);
+
+      // svg.append("g")
+      //   .attr("class", "y axis")
+      //   .attr("transform", "translate(0,0)")
+      //   .call(loc_axis);
       // debugger;
 
       // Bind and draw everything
@@ -213,7 +274,7 @@
     <div class="span3" id="planets">
       <h4>Destination</h4>
       <p>
-        <a href="#" class="btn">Sun</a>
+        <a id="sun-button" class="btn">Sun</a>
         <a href="#" class="btn">Mercury</a>
         <a href="#" class="btn">Venus</a>
         <a href="#" class="btn">Mars</a>
