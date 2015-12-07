@@ -24,6 +24,23 @@
       fill: none;
       stroke: black;
     }
+
+    .locs text:hover {
+      font-style:italic;
+      font-size:1.25em;
+    }
+
+    path.trip {
+      stroke: black;
+      stroke-width: 1;
+      stroke-dasharray: 5,5;
+    }
+
+    path.activity {
+      stroke: black;
+      stroke-width: 1.5;
+    }
+
   </style>
   <script type="text/javascript">
     function draw(locs) {
@@ -390,6 +407,59 @@
         .attr("transform", "translate(" + margin.left + ",0)")
         .call(loc_axis);
 
+      var legend = d3.select("#legend");
+
+      // debugger;
+      var lwidth = legend.attr("width");
+      var lheight = legend.attr("height");
+
+      ldata = {'launch': 0.1*lwidth, 'arrival':0.4*lwidth,
+                'end':0.7*lwidth, 'loc':0.5*lheight}
+
+      legend.append("rect")
+        .attr("width", lwidth)
+        .attr("height", lheight)
+        .attr("fill", "#F0F0F0");
+
+      legend.append("path")
+        .attr("class", "trip")
+        .attr('d', "M"+ldata.launch+" "+ldata.loc+" L"+ldata.arrival+" "+ldata.loc);
+
+      legend.append("path")
+        .attr("class", "activity")
+        .attr("marker-end", "url(#Triangle)")
+        .attr('d', "M"+ldata.arrival+" "+ldata.loc+" L"+ldata.end+" "+ldata.loc);
+
+      legend.append("text")
+        .attr("x", ldata.launch)
+        .attr("y", ldata.loc + 20)
+        .attr("text-anchor", "middle")
+        .text("Launch");
+      legend.append("text")
+        .attr("x", ldata.arrival)
+        .attr("y", ldata.loc + 20)
+        .attr("text-anchor", "middle")
+        .text("Arrival");
+      legend.append("text")
+        .attr("x", ldata.end)
+        .attr("y", ldata.loc + 20)
+        .attr("text-anchor", "middle")
+        .text("End");
+      legend.append("text")
+        .attr("x", (ldata.arrival - ldata.launch)*0.5 + ldata.launch)
+        .attr("y", ldata.loc - 15)
+        .attr("text-anchor", "middle")
+        .text("Trip");
+      legend.append("text")
+        .attr("x",(ldata.end - ldata.arrival)*0.5 + ldata.arrival)
+        .attr("y",ldata.loc - 15)
+        .attr("text-anchor", "middle")
+        .text("Activity")
+      legend.append("text")
+        .attr("x", ldata.end + 10)
+        .attr("y", ldata.loc)
+        .text("Success")
+
       // Bind and draw everything
 
     	// Set Mouseover events
@@ -434,16 +504,21 @@
     </div>
   </div>
   <div class="row-fluid">
-    <div class="span2 offset1" id="planets">
+    <div class="span3 offset1">
       <h4>Legend</h4>
-      <p>Here are what some of the symbols mean</p>
-      <p>Mouse-over missions for more information</p>
-      <p>Click locations on the right to zoom in</p>
+      <svg id="legend" width="350", height="80"></svg>
+      <p>Mouse-over missions for more information and for a link to Wikipedia.</p>
+      <p>Click text locations on the right to zoom in, click on it again to zoom out.</p>
     </div>
-    <div class="span9" id="years">
-      <p>This visualization is based off of this link.</p>
-      <p>My name is Kaan Divringi and this is a final project for the Udacity nanodegree class on D3.</p>
-    </div>
+    <div class="span6">
+      <p>This visualization is an interactive, re-imagined version of <a href="https://commons.wikimedia.org/wiki/File:Timeline_of_Solar_System_exploration.jpg" target="_blank">this</a> infographic.</p>
+      <p>The intent was to present as much of the information from the original graphic as possible in a more accessible way, taking advantage of the interactivity that D3 enables. My first design decision was to place the time axis on the horizontal axis, taking advantage of a well established convention in line charts so that the user can more intuitively grasp the chart.</p>
+      <p>One of the difficulties I found in the original chart was identifying locations. It was not always easy to match the color to the location in the legend and often necessitated zooming in and out many times, especially when the color was ambiguous. In extracting the colors I actually used a color picker tool in a paint program. I decided to make the color areas regular and have bands labeled right on the axis instead of in a separate legend. This, in my opinion, conveys the two most important variables of the chart(time and location) using the two most powerful visual indicators: position x & y. Because of the ordinal nature of the vertical position labels, I added the bands of color from the original graphic to strengthen this indicator.</p>
+      <p>Because of the need to compress the larger infographic into a smaller area, some information was left out of the default view. A mouse over of the lines can get an info-box of more information on the missions. In the zoomed-in view of any of the locations the mission names are added, as will symbols for the mission type (work in progress). The default view does convey time, position, mission stages and mission success/failure for all of the missions at once without any zooming needing.</p>
+      <p>The secondary destinations information from the original graph was not added, due to the complexity it would have created. This ended up reducing the total number of locations, however, as some locations were not the primary destination for any of the missions. This ended up making the overall graph still easier to read. I also did not deal with unusual mission sequences, such as the trip-activity-trip of the Dawn mission in the original graphic. Every mission in this graphic has one trip and then one activity period.</p>
+      <p>Overall I believe I was able to represent the original graphic in a more accessible way. General patterns are observable and the outlines of the story of our exploration missions in the solar system are shown.</p>
+      <p>My name is Kaan Divringi and this is a final project for the Udacity class <a href="https://www.udacity.com/course/data-visualization-and-d3js--ud507" target="_blank">Data Visualization and D3.js</a>. This was done as part of a Data Analyst Nanodegree.</p>
+    </div><div class="offset2"
     
   </div>
   </div>
