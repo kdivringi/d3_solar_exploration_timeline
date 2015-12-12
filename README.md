@@ -1,15 +1,15 @@
-A Visualization of Solar System Exploration
-============================================
+#A Visualization of Solar System Exploration
+
 
 By Kaan Divringi
 Udacity Final Project - Make Effective Data Visualization
 
-Summary
----------
+##Summary
+
 This visualization is an interactive, re-imagined version of [this](https://commons.wikimedia.org/wiki/File:Timeline_of_Solar_System_exploration.jpg) infographic, a timeline of solar exploration missions in the space age. The intent was to present as much of the information from the original graphic as possible in a more accessible way, taking advantage of the interactivity that D3 enables.
 
-Design
--------
+##Design
+
 My first design decision was to place the time axis on the horizontal axis, taking advantage of a well established convention in line charts so that the user can more intuitively grasp the chart.
 
 One of the difficulties I found in the original chart was identifying locations. It was not always easy to match the color to the location in the legend and often necessitated zooming in and out many times, especially when the color was ambiguous. In extracting the colors I actually used a color picker tool in a paint program. I decided to make the color areas regular and have bands labeled right on the axis instead of in a separate legend. This, in my opinion, conveys the two most important variables of the chart (time and location) using the two most powerful visual indicators: position x and y. Because of the ordinal nature of the vertical position labels, I added the bands of color from the original graphic to strengthen this indicator.
@@ -20,8 +20,8 @@ The secondary destinations information from the original graph was not added, du
 
 Overall I believe I was able to represent the original graphic in a more accessible way. General patterns are observable and the outlines of the story of our exploration missions in the solar system are shown.
 
-Feedback
----------
+
+##Feedback
 
 Feedback1:
 Nice project...
@@ -72,20 +72,29 @@ Feedback3:
 >
 >The model also takes up less space and is more easily read.
 
+### Design Re:Feedback
 
+Feedback for the visualization was generally positive. One person suggested adding mission types to the visualization, which I already had in mind and had partly started. I ended up creating some original svg graphics for each one in Inkscape and adding them in programmatically. The mission type icons are too much detail in the overall view but when it is zoomed in they are added, along with a legend to the left to denote the types. The legend is too distracting on the global view so I decided to show it only in the zoomed in view.
 
-Resources
-----------
+I redid the planet/location colors on the suggestion of two of the reviewers. While I couldn't really find one iconic color for each location (many of them are grey or brown, mostly) I used a qualitative color schema from ColorBrewer2 and matched some of the colors appropriate to some of the more popular locations. The premade palette avoids the trouble of distinguishing some of the colors from each other, which was one of the comments.
 
-http://www.svgbasics.com/markers.html
-http://vanseodesign.com/web-design/svg-markers/
-http://alignedleft.com/tutorials/d3/axes
-http://bl.ocks.org/mbostock/1166403
-https://github.com/mbostock/d3/wiki
-http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
-http://getbootstrap.com/css/
-http://www.w3schools.com/svg/svg_path.asp
-https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration
-https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
-https://s3.amazonaws.com/udacity-hosted-downloads/ud507/Canvas_and_Axes.jpeg
-http://colorbrewer2.org/
+Faint vertical lines were added, as requested. It was important to make these faint enough so they did not make an already busy chart too busy.
+
+The links in the explanatory text were made bold to make them easier to see.
+
+I added some explanation below the legend as to why not every mission has a trip line from the Earth location. That is something that can be difficult to grasp, especially if the mission type data is not as easily seen as it is now.
+
+##Resources
+
+-http://www.svgbasics.com/markers.html
+-http://vanseodesign.com/web-design/svg-markers/
+-http://alignedleft.com/tutorials/d3/axes
+-http://bl.ocks.org/mbostock/1166403
+-https://github.com/mbostock/d3/wiki
+-http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
+-http://getbootstrap.com/css/
+-http://www.w3schools.com/svg/svg_path.asp
+-https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration
+-https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
+-https://s3.amazonaws.com/udacity-hosted-downloads/ud507/Canvas_and_Axes.jpeg
+-http://colorbrewer2.org/
