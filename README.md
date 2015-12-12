@@ -1,7 +1,8 @@
 #A Visualization of Solar System Exploration
 
-By Kaan Divringi
-Udacity Final Project - Make Effective Data Visualization
+*By Kaan Divringi*
+
+*Udacity Final Project - Make Effective Data Visualization*
 
 [Link to live visualization](http://kdivringi.github.io/)
 
