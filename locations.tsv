@@ -1,12 +1,12 @@
-name	position	color
-Sun	0.045	#F4E69D
-Mercury	0.136	#BFBFBF
-Venus	0.227	#F7B47D
-Earth	0.318	blue
-Mars	0.409	#F2919A
-Asteroids	0.5	#83D1DB
-Jupiter	0.591	#DFB97B
-Saturn	0.682	#D3AD6C
-Comets	0.773	#51C9E4
-Interplanetary Space	0.864	#B1A1C6
-Pluto	0.955	#94C09C
+name	color
+Sun	#fbd462
+Mercury	#d9d9d9
+Venus	#ffffb3
+Earth	#80b1d3
+Mars	#fb8072
+Asteroids	#ccebc5
+Jupiter	#bc80bd
+Saturn	#bebada
+Comets	#8dd3c7
+Interplanetary Space	#fccde5
+Pluto	#b3de69

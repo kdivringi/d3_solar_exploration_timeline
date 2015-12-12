@@ -30,6 +30,10 @@
       font-size:1.25em;
     }
 
+    .x .tick line {
+      opacity:0.075;
+    }
+
     path.trip {
       stroke: black;
       stroke-width: 1;
@@ -111,6 +115,7 @@
       var time_axis = d3.svg.axis()
         .scale(time_scale)
         .orient("bottom")
+        .tickSize(-height)
         .tickFormat(d3.format("04d"));
 
       var tip = d3.tip()
@@ -519,13 +524,13 @@
       <p>Click text locations on the left to zoom in, click on it again to zoom out.</p>
     </div>
     <div class="span6">
-      <p>This visualization is an interactive, re-imagined version of <a href="https://commons.wikimedia.org/wiki/File:Timeline_of_Solar_System_exploration.jpg" target="_blank">this</a> infographic.</p>
+      <p>This visualization is an interactive, re-imagined version of <a href="https://commons.wikimedia.org/wiki/File:Timeline_of_Solar_System_exploration.jpg" target="_blank"><strong>this</strong></a> infographic.</p>
       <p>The intent was to present as much of the information from the original graphic as possible in a more accessible way, taking advantage of the interactivity that D3 enables. My first design decision was to place the time axis on the horizontal axis, taking advantage of a well established convention in line charts so that the user can more intuitively grasp the chart.</p>
       <p>One of the difficulties I found in the original chart was identifying locations. It was not always easy to match the color to the location in the legend and often necessitated zooming in and out many times, especially when the color was ambiguous. In extracting the colors I actually used a color picker tool in a paint program. I decided to make the color areas regular and have bands labeled right on the axis instead of in a separate legend. This, in my opinion, conveys the two most important variables of the chart (time and location) using the two most powerful visual indicators: position x and y. Because of the ordinal nature of the vertical position labels, I added the bands of color from the original graphic to strengthen this indicator.</p>
       <p>Because of the need to compress the larger infographic into a smaller area, some information was left out of the default view. A mouse over of the lines can get an info-box of more information on the missions. In the zoomed-in view of any of the locations the mission names are added, as will symbols for the mission type (work in progress). The default view does convey time, position, mission stages and mission success/failure for all of the missions at once without any zooming needing.</p>
       <p>The secondary destinations information from the original graph was not added, due to the complexity it would have created. This ended up reducing the total number of locations, however, as some locations were not the primary destination for any of the missions. This ended up making the overall graph still easier to read. I also did not deal with unusual mission sequences, such as the trip-activity-trip of the Dawn mission in the original graphic. Every mission in this graphic has one trip and then one activity period.</p>
       <p>Overall I believe I was able to represent the original graphic in a more accessible way. General patterns are observable and the outlines of the story of our exploration missions in the solar system are shown.</p>
-      <p>My name is Kaan Divringi and this is a final project for the Udacity class <a href="https://www.udacity.com/course/data-visualization-and-d3js--ud507" target="_blank">Data Visualization and D3.js</a>. This was done as part of a Data Analyst Nanodegree.</p>
+      <p>My name is Kaan Divringi and this is a final project for the Udacity class <a href="https://www.udacity.com/course/data-visualization-and-d3js--ud507" target="_blank"><strong>Data Visualization and D3.js</strong></a>. This was done as part of a Data Analyst Nanodegree.</p>
     </div><div class="offset2"
     
   </div>

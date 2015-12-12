@@ -88,3 +88,4 @@ http://www.w3schools.com/svg/svg_path.asp
 https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration
 https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
 https://s3.amazonaws.com/udacity-hosted-downloads/ud507/Canvas_and_Axes.jpeg
+http://colorbrewer2.org/
