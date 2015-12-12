@@ -1,8 +1,9 @@
 #A Visualization of Solar System Exploration
 
-
 By Kaan Divringi
 Udacity Final Project - Make Effective Data Visualization
+
+[Link to live visualization](http://kdivringi.github.io/)
 
 ##Summary
 
@@ -86,15 +87,15 @@ I added some explanation below the legend as to why not every mission has a trip
 
 ##Resources
 
--http://www.svgbasics.com/markers.html
--http://vanseodesign.com/web-design/svg-markers/
--http://alignedleft.com/tutorials/d3/axes
--http://bl.ocks.org/mbostock/1166403
--https://github.com/mbostock/d3/wiki
--http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
--http://getbootstrap.com/css/
--http://www.w3schools.com/svg/svg_path.asp
--https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration
--https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
--https://s3.amazonaws.com/udacity-hosted-downloads/ud507/Canvas_and_Axes.jpeg
--http://colorbrewer2.org/
+- http://www.svgbasics.com/markers.html
+- http://vanseodesign.com/web-design/svg-markers/
+- http://alignedleft.com/tutorials/d3/axes
+- http://bl.ocks.org/mbostock/1166403
+- https://github.com/mbostock/d3/wiki
+- http://bl.ocks.org/WilliamQLiu/76ae20060e19bf42d774
+- http://getbootstrap.com/css/
+- http://www.w3schools.com/svg/svg_path.asp
+- https://en.wikipedia.org/wiki/Timeline_of_Solar_System_exploration
+- https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor
+- https://s3.amazonaws.com/udacity-hosted-downloads/ud507/Canvas_and_Axes.jpeg
+- http://colorbrewer2.org/
