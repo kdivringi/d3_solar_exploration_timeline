@@ -140,6 +140,8 @@
 
       svg.on("click", tip.hide);
 
+
+
       // Function to draw mission path
       function draw_missions(data) {
 
@@ -283,6 +285,50 @@
               var y1 = loc_scale(d['destination']) + y_factor; 
               return "M" + x0 + " " + y0 + " L" + x1 + " " + y1;
             });
+
+          var m_images = d3.select("g.mission")
+            .selectAll('image.mtype')
+            .data(m_filtered, keyfunc)
+
+          if (loc_scale.domain().length===1) {
+            m_images.enter()
+            .append("image")
+            .attr("class", "mtype")
+            .attr('x', function (d) {
+              return time_scale(d['launch']) - 25;
+            })
+            .attr('y', function (d, i) {
+              var y_factor = calc_y_factor(i)*0.9;
+              return loc_scale(d['destination']) + y_factor;
+            })
+            .attr('height', 20)
+            .attr('width', 20)
+            .attr('xlink:href', function (d) {
+              return "img/" + d['type'] + ".png"
+            })
+            .attr('opacity', 0);
+
+            m_images.transition()
+            .duration(t_time)
+            .attr("opacity", 1);
+
+            svg.select('image.m_legend')
+              .transition()
+              .duration(t_time)
+              .attr("opacity", 1);
+
+          } else {
+            m_images.transition()
+            .attr("opacity", 0)
+            .remove();
+
+            svg.select('image.m_legend')
+              .transition()
+              .duration(t_time)
+              .attr("opacity", 0);
+
+
+          }
 
           activities = d3.select("g.mission")
             .selectAll('path.activity')
@@ -467,11 +513,13 @@
         .text("Success")
 
       svg.append("image")
-        .attr("xlink:href", "img/Missions_full.png")
-        .attr("x", margin.left + width + 20)
+        .attr('class', 'm_legend')
+        .attr("xlink:href", "img/Missions_legend.png")
+        .attr("x", margin.left + width + 40)
         .attr("y", 50)
-        .attr('height', 600)
-        .attr("width", 80)
+        .attr('height', 747*0.5)
+        .attr("width", 465*0.5)
+        .attr("opacity", 0);
 
       // Bind and draw everything
 
@@ -520,8 +568,14 @@
     <div class="span3 offset1">
       <h4>Legend</h4>
       <svg id="legend" width="350", height="80"></svg>
-      <p>Mouse-over missions for more information and for a link to Wikipedia. Click in empty space to remove the tooltip.</p>
-      <p>Click text locations on the left to zoom in, click on it again to zoom out.</p>
+      <dl>
+        <dt>Trip</dt>
+        <dd>The length of time from the launch of the spacecraft to the arrival location where main mission activities take place. Not all missions involve physical travel to the location of interest. Travel times of under a year are not depicted.</dd>
+        <dt>Activity</dt>
+        <dd>The main mission activity is where scientific data acquisition takes place.</dd>
+      </dl>
+      <p><em>Mouse-over missions for more information and for a link to Wikipedia. Click in empty space to remove the tooltip.</em></p>
+      <p><em>Click text locations on the left to zoom in, click on it again to zoom out.</em></p>
     </div>
     <div class="span6">
       <p>This visualization is an interactive, re-imagined version of <a href="https://commons.wikimedia.org/wiki/File:Timeline_of_Solar_System_exploration.jpg" target="_blank"><strong>this</strong></a> infographic.</p>
