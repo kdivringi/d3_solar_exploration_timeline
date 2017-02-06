@@ -4,7 +4,7 @@
 
 *Udacity Final Project - Make Effective Data Visualization*
 
-[Link to live visualization](http://kdivringi.github.io/)
+[Link to live visualization](http://kdivringi.github.io/d3-solar/)
 
 ##Summary
 
