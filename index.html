@@ -288,12 +288,14 @@
             .attr('opacity', 0);
 
             m_images.transition()
+            .delay(t_time)
             .duration(t_time)
             .attr("opacity", 1);
 
             // Show mission type legend
             svg.select('image.m_legend')
               .transition()
+              .delay(t_time)
               .duration(t_time)
               .attr("opacity", 1);
           } else {
@@ -305,7 +307,8 @@
             // Fade mission type legend
             svg.select('image.m_legend')
               .transition()
-              .duration(t_time)
+              .duration(250)
+              //.duration(t_time)
               .attr("opacity", 0);
           }
 
@@ -350,11 +353,13 @@
               .text(function (d) {return d['name']});
 
             m_names.transition()
+              .delay(t_time)
               .duration(t_time)
               .attr("opacity", 1);            
           } else {
             m_names.transition()
-              .duration(t_time)
+              .duration(250)
+              // .duration(t_time)
               .attr("opacity", 0)
               .remove();
           }
